@@ -1,0 +1,74 @@
+# Walmart Weekly Sales Analytics
+
+## Overview
+This project examines historical weekly sales data from multiple Walmart stores across the United States.  
+We use the CRISP-DM approach to uncover trends, patterns, and relationships between sales performance and factors like holidays, weather, fuel prices, and local economic indicators.
+
+## Goals
+1. Practice the CRISP-DM (Cross-Industry Standard Process for Data Mining).  
+2. Identify patterns and trends in weekly sales data.  
+3. Compare sales performance during holiday and non-holiday weeks.  
+4. Evaluate the impact of temperature, fuel prices, CPI, and unemployment on sales.  
+5. Build a predictive model to estimate future weekly sales.  
+6. Provide actionable business insights for Walmart’s planning and decision-making.
+
+## Specifications
+We follow the six CRISP-DM phases:
+- Business Understanding  
+- Data Understanding  
+- Data Preparation  
+- Modeling  
+- Evaluation  
+- Deployment
+
+## Introduction
+In today’s data-driven world, understanding what drives retail sales is critical.  
+By applying CRISP-DM, we explore how holidays and economic variables shape weekly store sales and build a forecasting model to guide future strategy.
+
+## Methodology
+- **Language & Tools**: Python (pandas, NumPy, scikit-learn, matplotlib, seaborn, SciPy)  
+- **IDE**: PyCharm  
+- All cleaning, analysis, modeling, and visualization happened in Python.
+
+## CRISP-DM Approach
+
+### 1. Business Understanding  
+**Objective:** Identify which factors most influence weekly Walmart sales.  
+**Hypotheses:**  
+- H₀: No difference in average sales between holiday and non-holiday weeks.  
+- H₁: A significant difference exists.
+
+### 2. Data Understanding  
+- **Source**: [Walmart Sales | Kaggle](#)  
+- **Records**: 6,435 weekly entries  
+- **Key fields**: WeeklySales, Store, Date, HolidayFlag, Temperature, FuelPrice, CPI, Unemployment
+
+### 3. Data Preparation  
+- Converted `Date` to datetime, extracted Month & Year  
+- Verified no missing values  
+- Selected features: Store, Holiday_Flag, Temperature, Fuel_Price, CPI, Unemployment, Month, Year
+
+### 4. Modeling  
+1. **Linear Regression**  
+   - RMSE: 522,138.09  
+   - R²: 0.1537  
+   - Multicollinearity check (all VIF < 5)  
+2. **Random Forest**  
+   - RMSE: 147,766.41  
+   - R²: 0.9322  
+   - Top features: Store, CPI, Unemployment
+
+### 5. Evaluation  
+- Random Forest far outperforms linear regression (R² 0.93 vs. 0.15).  
+- Non-linear interactions and regional patterns captured well.
+
+### 6. Deployment  
+- Model serialized via `joblib`/`pickle`.  
+- Can be integrated into a weekly forecasting dashboard.  
+- Business recommendations for Marketing and Inventory teams listed in the report.
+
+## Next Steps
+- Try time-series models (ARIMA, Prophet).  
+- Cluster stores by type/region.  
+- Incorporate promotions and weather data for richer forecasts.
+
