@@ -15,8 +15,11 @@ A complete end‐to‐end project that ingests historical Walmart store sales da
    ```bash
    pip install -r requirements.txt
 
-3. **Data preparation**
+3. **Exploratory data analysis & visualizations**
    ```bash
    python code/data_prep.py
+   
+4. **Install dependencies**  
+   ```bash
+   python code/eda.py
 
-5. 
