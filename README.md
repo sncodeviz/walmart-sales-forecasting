@@ -34,4 +34,3 @@ A complete end‐to‐end project that ingests historical Walmart store sales da
 
 7. **View report**
    See the full write‐up in Sales Forecasting and Analysis for Walmart Stores Report
-

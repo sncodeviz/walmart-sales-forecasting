@@ -1,0 +1,143 @@
+Overview
+This project examines historical weekly sales data from multiple Walmart stores across the United States. This analytics project aims to uncover trends, patterns, and relationships between sales performance and external factors like holidays, weather, fuel prices, and local economic indicators.
+Goals
+1.	Practice the CRISP-DM (Cross-Industry Standard Process for Data Mining) approach using data science techniques to solve a real-world business problem. 
+
+2.	Identify patterns and trends in weekly sales data. 
+
+3.	Compare sales performance during holiday and non-holiday weeks. 
+
+4.	Evaluate the impact of variables like temperature, fuel prices, CPI (Consumer Price Index), and unemployment on sales.
+
+5.	Build a predictive model that can estimate future weekly sales. 
+
+6.	Provide actionable business insights that Walmart could use to make data-driven decisions.
+
+Specifications
+To achieve the goals, the project includes the following key components, based on the CRISP-DM Approach: 
+•	Business Understanding
+•	Data Understanding
+•	Data Preparation
+•	Modeling Methods
+•	Evaluations
+•	Deployment of results
+
+Introduction 
+In the rapidly evolving business world, data-driven decisions are essential for maintaining growth and customer satisfaction. Using the CRISP-DM approach, this project intends to explore how variables such as holidays, temperature, fuel prices, and economic indicators affect store sales and build a predictive model that can assist in future planning and business strategy.
+Methodology
+This project was conducted using the Python programming language. All data cleaning, statistical testing, modeling, and visualization were done using Python libraries such as pandas, NumPy, scikit-learn, matplotlib, seaborn, SciPy, and more. The entire analysis was coded and executed within PyCharm.  
+CRISP-DM Approach
+1.	Business Understanding
+I.	Objective: What is the business problem?
+We want to understand what factors most influence weekly sales across its various stores and how holidays and economic indicators affect those sales. This will help in better planning, stocking, and marketing strategies. 
+II.	Hypothesis
+Null Hypothesis: There is no significant difference in average weekly sales between holiday weeks and non-holiday weeks.
+
+Alternative Hypothesis: There is a significant difference in average weekly sales between holiday weeks and non-holiday weeks.
+2.	Data Understanding
+i.	Dataset Introduction
+Dataset Title: Walmart Sales | Kaggle (Source: Click Here)
+Dataset Brief Description: The dataset contains weekly sales data for multiple Walmart stores, including information about holiday periods, store types, and regional differences. 
+
+The dataset is a good fit for the CRISP-DM because it is ideal for analyzing patterns and seasonality and building forecasting models to support retail decision-making. Hence, this dataset can be used to draw solid conclusions on the business understanding of sales, data preparation, exploratory analysis, predictive modeling, and business recommendations. 
+ii.	Dataset Details
+	6,435 weekly records across multiple Walmart stores
+	Key Variables: Weekly Sales (target), Store, Date, Holiday Flag, Temperature, Fuel Price, CPI, Unemployment
+	Some seasonal and store-specific patterns were observed
+3.	Data Preparation
+i.	Data Cleaning
+The dataset was first cleaned to ensure it was ready for analysis. The ‘Date’ column was converted into a proper datetime format so time-based features could be extracted. No missing values were found in the dataset. Hence, no removal was needed. The data contained datatypes that were appropriate for modeling. 
+ii.	Feature Selection
+The following features were selected from the dataset as relevant for modeling weekly sales: 
+•	Store: The store ID
+•	Holiday_Flag: Indicates whether the week included a major holiday
+•	Temperature, Fuel_Price, CPI (Consumer Price Index), and Unemployment: Economic and environmental factors
+•	Month and Year: Extracted from the date to capture seasonality and yearly trend
+iii.	Exploratory Analysis
+First, descriptive statistics were calculated for all key variables, including mean, median, standard deviation, and range. To identify distributions and outliers, histograms and boxplots were created for variables like weekly sales, temperature, fuel prices, and CPI. Then, a two-sample t-test was also conducted to explore whether holiday weeks had significantly different sales from non-holiday weeks.
+Note: Check Appendix B for Details on the descriptive statistics on selected features.
+Histogram & Boxplots
+
+Two-Sample t-Test
+A two-sample t-test was conducted to test the hypothesis: Do holiday weeks have significantly different average sales than non-holiday weeks?
+PyCharm Output:
+Two-Sample T-Test Results:
+T-statistic: 2.6801
+P-value: 0.0076
+Result: Reject the null hypothesis. Sales are significantly different during holiday weeks.
+
+Discussion: 
+The p-value (0.0076) is much lower than the significance level (0.05). Hence, there's strong statistical evidence that holiday weeks have different average sales compared to non-holiday weeks. The t-statistic (2.68) tells us how large the difference is relative to the variation in the data.
+
+Therefore, we reject the null hypothesis. Weekly sales during holiday weeks are significantly different from those during non-holiday weeks. This finding supports the assumption that holiday periods influence customer purchasing behavior and overall store performance. 
+4.	Modeling
+i.	Model 1: Linear Regression
+The baseline predictive model – To predict weekly sales based on multiple factors (store, temperature, fuel price, holiday flag, etc.)
+PyCharm Output:
+Linear Regression Results:
+RMSE: 522138.09
+R-squared: 0.1537
+
+Discussion: 
+RMSE (Root Mean Squared Error): On average, the baseline linear regression model’s predictions are off by about $522,000 weekly. R-squared (R² = 0.1537): The model explains about 15.4% of the variation in weekly sales. 
+
+Due to the baseline prediction model being extremely weak, a VIF (Variance Inflation Factor) analysis was conducted to check for multicollinearity among the predictors. Hence, the features with high VIF can be dropped from the model to make the model's performance better. 
+
+PyCharm Output:
+Variance Inflation Factor (VIF):
+        Feature           VIF
+0         const  2.052638e+07
+1         Store  1.082030e+00
+2  Holiday_Flag  1.173685e+00
+3   Temperature  1.162985e+00
+4    Fuel_Price  3.206206e+00
+5           CPI  1.349496e+00
+6  Unemployment  1.271219e+00
+7         Month  1.182903e+00
+8          Year  3.238383e+00
+
+Discussion: 
+All VIFs are less than 5. Hence, we have no severe multicollinearity. Based on this output, there is no need to remove or modify any features. Therefore, we move on from Linear regression, using a flexible and non-linear algorithm.
+ii.	Model 2: Random Forest
+Random Forest is a machine learning model that builds many decision trees and combines them. This model will help capture non-linear relationships (like sudden spikes during holidays or seasonality). Also, it helps identify which features (Store, Month, CPI, etc.) are most important.
+
+PyCharm Output: 
+Random Forest Regression Results:
+RMSE: 147766.41
+R-squared: 0.9322
+
+Discussion: 
+RMSE (147,766.41) indicates that our average prediction error is now around $ 147,766 instead of over $522 K (Baseline Linear Regression Model). This is a huge improvement. 
+
+R-squared (0.9322) indicated that the model now explains 93.2% of the variance in weekly sales, compared to only 15.4% of the baseline linear model. Hence, this model captures the real-world complexity of the data very well.
+
+Next, an important feature analysis was done to find which features are the most important. 
+
+Discussion: 
+Store ID, CPI, and Unemployment were the top 3 features influencing weekly sales based on Random Forest feature importance.
+5.	Evaluation
+The performance of the model was assessed using Root Mean Squared Error (RMSE) and R-squared (R2). The baseline linear regression model has limited explanatory power (R² = 0.15), while the random forest model dramatically improved the result (R² = 0.93). 
+Hence, the random forest model was able to capture non-linear relationships, interactions, and store-level patterns. 
+6.	Deployment
+The model developed in this project is structured to support real-world deployment. Therefore, this random forest model could be saved using Python’s joblib or pickle libraries, integrated into a forecasting dashboard, and used weekly by analysts of Walmart to predict upcoming sales by store. 
+In addition, the insights derived from the random forest model offer recommendations for multiple departments: 
+Marketing Department
+•	Store ID was the most important feature, indicating significant regional differences in consumer behavior. Hence, Marketing campaigns should be localized by store or region, not rolled out uniformly across all locations. 
+
+•	Since economic indicators like CPI and unemployment are strong predictors as well, these can guide messaging strategies. In high-CPI regions, emphasize discounts or essential goods; in stable regions, consider promoting seasonal or premium items.
+
+•	Even if the two-sample t-test showed that holidays were statistically significant, the Random Forest model found that holidays alone are not the strongest predictor of sales. Therefore, holiday campaigns should be paired with economic awareness, such as targeting regions with high CPI or unemployment with affordability-focused messaging.
+Products & Inventory
+•	Due to the model shows that Store ID is an important factor, store-specific inventory planning is more effective than national-level stocking strategies. Hence, forecasting sales by store enables more efficient resource allocation, staffing, and inventory delivery.
+
+•	Features like temperature and fuel price showed low predictive importance, suggesting Walmart need not over-prioritize them in short-term stocking or pricing decisions.
+
+•	The model can also be used for scenario planning, such as simulating what might happen if unemployment rises in specific regions, to proactively adjust supply chain logistics.
+
+Conclusion
+This project used the CRISP-DM approach to explore, analyze, and model Walmart’s weekly sales data. A two-sample t-test confirmed that holiday weeks significantly impact sales. 
+A baseline linear regression model turned out to have limitations as the dataset was complex and contained non-linear relationships among features. The R-squared of the baseline model was 0.15. Hence, the model only explains 15% of the variance in the dependent variable based on the independent variables. 
+To explore the complex dataset, a random forest model was built. It demonstrated strong predictive performance (R² = 0.93), identifying store ID, CPI, and unemployment as top drivers of weekly sales.
+To expand the analysis, in the future, more could be done by doing time-series forecasting like ARIMA, store-type clustering, or integrating more data, such as weather and promotions, which could refine the model’s predictive power. 
+
+
