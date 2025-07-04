@@ -23,3 +23,15 @@ A complete end‐to‐end project that ingests historical Walmart store sales da
    ```bash
    python code/eda.py
 
+5. **Statistical testing**
+   ```bash
+   python code/t_test.py
+
+6. **Model training & forecasting**
+   ```bash
+   python code/linear_regression.py
+   python code/random_forest.py
+
+7. **View report**
+   See the full write‐up in Sales Forecasting and Analysis for Walmart Stores Report
+
