@@ -2,11 +2,14 @@
 
 A complete end‐to‐end project that ingests historical Walmart store sales data, performs exploratory data analysis, conducts statistical tests, trains forecasting models, and generates visualizations to inform inventory and staffing decisions.
 
-## 📋 Purpose
+## Purpose
 - **Forecast** weekly sales for each store and department using linear regression and random forest models.  
 - **Analyze** sales distributions, seasonality, and product mix with histograms, box plots, and time‐series charts.  
 - **Evaluate** model performance via train/test split and statistical metrics.  
 - **Provide** clear visuals and a written report to guide business stakeholders.
+
+## Dataset
+- **This project uses the [Walmart Store Sales Forecasting dataset on Kaggle](https://www.kaggle.com/datasets/9592bb3b3c89493fabab56b4317ae10dbd70e6b66d2d464fb7f08c6a5903556d).
 
 ## ⚙️ How to Run
 
