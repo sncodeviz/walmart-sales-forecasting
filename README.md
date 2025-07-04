@@ -9,7 +9,7 @@ A complete end‐to‐end project that ingests historical Walmart store sales da
 - **Provide** clear visuals and a written report to guide business stakeholders.
 
 ## Dataset
-- **This project uses the [Walmart Store Sales Forecasting dataset on Kaggle](https://www.kaggle.com/datasets/9592bb3b3c89493fabab56b4317ae10dbd70e6b66d2d464fb7f08c6a5903556d).
+- This project uses the [Walmart Store Sales Forecasting dataset on Kaggle](https://www.kaggle.com/datasets/9592bb3b3c89493fabab56b4317ae10dbd70e6b66d2d464fb7f08c6a5903556d).
 
 ## ⚙️ How to Run
 
