@@ -14,3 +14,23 @@ A complete end‐to‐end project that ingests historical Walmart store sales da
 2. **Install dependencies**  
    ```bash
    pip install -r requirements.txt
+
+3. **Exploratory data analysis & visualizations**
+   ```bash
+   python code/data_prep.py
+   
+4. **Install dependencies**  
+   ```bash
+   python code/eda.py
+
+5. **Statistical testing**
+   ```bash
+   python code/t_test.py
+
+6. **Model training & forecasting**
+   ```bash
+   python code/linear_regression.py
+   python code/random_forest.py
+
+7. **View report**
+   See the full write‐up in Sales Forecasting and Analysis for Walmart Stores Report
